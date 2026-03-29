@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "com.unity.services.core":           "1.13.0",
+    "com.unity.services.authentication": "3.3.3",
+    "com.unity.services.cloudsave":      "3.2.1",
+    "com.unity.services.leaderboards":   "2.1.0",
+    "com.unity.services.economy":        "3.4.0",
+    "com.unity.textmeshpro":             "3.0.6",
+    "com.unity.render-pipelines.universal": "14.0.11",
+    "com.unity.inputsystem":             "1.8.2",
+    "com.unity.nuget.newtonsoft-json":   "3.2.1"
+  }
+}
