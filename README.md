@@ -6,6 +6,20 @@ A love letter to Summernats, Calder Park, and every backyard mechanic who ever d
 
 ---
 
+## 📸 Screenshots
+
+| Main Menu | Burnout Competition |
+|:---------:|:-------------------:|
+| ![Main Menu](media/screenshots/01_main_menu.svg) | ![Burnout Competition HUD](media/screenshots/02_burnout_competition.svg) |
+
+| Drag Race | Garage & Customisation |
+|:---------:|:----------------------:|
+| ![Drag Race](media/screenshots/03_drag_race.svg) | ![Garage](media/screenshots/04_garage.svg) |
+
+> *Mockup screens based on the implemented game systems. Built in Unity 2022.3 LTS with URP.*
+
+---
+
 ## 🔥 Features
 
 ### Vehicle Physics

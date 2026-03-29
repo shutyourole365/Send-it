@@ -1,0 +1,276 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyDrag" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#03050a"/>
+      <stop offset="55%" stop-color="#080c18"/>
+      <stop offset="100%" stop-color="#0c0e08"/>
+    </linearGradient>
+    <linearGradient id="trackGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="trackLineGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+    </linearGradient>
+    <radialGradient id="headlightBeam" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#FFEE88" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#FFEE88" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="lightGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="strongGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="1280" height="720" fill="url(#skyDrag)"/>
+
+  <!-- Distant treeline / horizon -->
+  <g fill="#060808" opacity="0.9">
+    <rect x="0"    y="310" width="1280" height="20"/>
+    <!-- Trees silhouette (simple triangles) -->
+    <polygon points="0,330 20,290 40,330"/>
+    <polygon points="35,330 60,280 85,330"/>
+    <polygon points="80,330 108,285 136,330"/>
+    <polygon points="130,330 152,295 174,330"/>
+    <polygon points="168,330 195,278 222,330"/>
+    <polygon points="215,330 238,292 261,330"/>
+    <polygon points="880,330 900,292 920,330"/>
+    <polygon points="910,330 938,278 966,330"/>
+    <polygon points="960,330 982,286 1004,330"/>
+    <polygon points="998,330 1022,293 1046,330"/>
+    <polygon points="1040,330 1065,280 1090,330"/>
+    <polygon points="1085,330 1108,290 1131,330"/>
+    <polygon points="1125,330 1152,282 1179,330"/>
+    <polygon points="1170,330 1195,295 1220,330"/>
+    <polygon points="1215,330 1242,285 1269,330"/>
+    <polygon points="1265,330 1280,298 1280,330"/>
+  </g>
+
+  <!-- Drag strip (perspective view, looking down track) -->
+  <!-- Background tarmac -->
+  <polygon points="0,330 1280,330 1280,720 0,720" fill="url(#trackGrad)"/>
+  <!-- Track lane divider (centre line fading to vanishing point) -->
+  <!-- Left track boundary -->
+  <polygon points="320,330 490,720 0,720 0,330" fill="#0e0e0e"/>
+  <!-- Right track boundary -->
+  <polygon points="960,330 790,720 1280,720 1280,330" fill="#0e0e0e"/>
+  <!-- Centre track (player lane) -->
+  <polygon points="320,330 960,330 790,720 490,720" fill="#161616"/>
+  <!-- AI opponent lane markings (left lane) -->
+  <polygon points="160,330 320,330 490,720 180,720" fill="#0f0f0f"/>
+
+  <!-- Track edge markings (white lines) -->
+  <line x1="320" y1="330" x2="490" y2="720" stroke="url(#trackLineGrad)" stroke-width="3"/>
+  <line x1="960" y1="330" x2="790" y2="720" stroke="url(#trackLineGrad)" stroke-width="3"/>
+  <line x1="160" y1="330" x2="180" y2="720" stroke="url(#trackLineGrad)" stroke-width="2" opacity="0.4"/>
+
+  <!-- Start line -->
+  <g opacity="0.6">
+    <!-- Start line stripes (chequered) -->
+    <g fill="#FFFFFF">
+      <rect x="490" y="615" width="25" height="20"/>
+      <rect x="540" y="615" width="25" height="20"/>
+      <rect x="590" y="615" width="25" height="20"/>
+      <rect x="640" y="615" width="25" height="20"/>
+      <rect x="690" y="615" width="25" height="20"/>
+      <rect x="740" y="615" width="25" height="20"/>
+      <rect x="515" y="635" width="25" height="20"/>
+      <rect x="565" y="635" width="25" height="20"/>
+      <rect x="615" y="635" width="25" height="20"/>
+      <rect x="665" y="635" width="25" height="20"/>
+      <rect x="715" y="635" width="25" height="20"/>
+      <rect x="765" y="635" width="25" height="20"/>
+    </g>
+    <rect x="490" y="612" width="300" height="3" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Road markings (dashes, fading to horizon) -->
+  <g stroke="#888888" stroke-width="2" opacity="0.25">
+    <line x1="640" y1="615" x2="640" y2="610"/>
+    <line x1="640" y1="590" x2="640" y2="565"/>
+    <line x1="640" y1="540" x2="640" y2="515"/>
+    <line x1="640" y1="488" x2="640" y2="468"/>
+    <line x1="640" y1="448" x2="640" y2="432"/>
+    <line x1="640" y1="416" x2="640" y2="402"/>
+    <line x1="640" y1="388" x2="640" y2="376"/>
+    <line x1="640" y1="362" x2="640" y2="352"/>
+    <line x1="640" y1="342" x2="640" y2="336"/>
+  </g>
+
+  <!-- Headlight beams onto track (player car) -->
+  <polygon points="570,640 710,640 780,330 500,330" fill="url(#headlightBeam)" opacity="0.3"/>
+
+  <!-- Player Car (bottom centre, launch position) -->
+  <g transform="translate(640, 638)">
+    <ellipse cx="0" cy="28" rx="105" ry="14" fill="#000000" opacity="0.7"/>
+    <!-- Body -->
+    <path d="M -100,25 L -105,5 L -78,-10 L -52,-20 L 3,-26 L 55,-22 L 80,-8 L 96,5 L 98,25 Z"
+          fill="#1e2230" stroke="#2a2e42" stroke-width="2"/>
+    <!-- Roof -->
+    <path d="M -42,-20 L -25,-50 L 28,-54 L 52,-50 L 68,-20 Z"
+          fill="#14162a" stroke="#1e2238" stroke-width="1.5"/>
+    <!-- Windscreen -->
+    <path d="M -38,-20 L -22,-47 L 26,-51 L 50,-47 L 64,-20 Z"
+          fill="#0a1428" opacity="0.9"/>
+    <!-- Bonnet scoop -->
+    <rect x="-14" y="-22" width="28" height="7" rx="2" fill="#242838"/>
+    <!-- Wheels -->
+    <circle cx="-72" cy="27" r="22" fill="#0a0a0a" stroke="#252525" stroke-width="3"/>
+    <circle cx="-72" cy="27" r="14" fill="#141414"/>
+    <circle cx="-72" cy="27" r="6"  fill="#1e1e1e"/>
+    <circle cx="70"  cy="27" r="22" fill="#0a0a0a" stroke="#252525" stroke-width="3"/>
+    <circle cx="70"  cy="27" r="14" fill="#141414"/>
+    <circle cx="70"  cy="27" r="6"  fill="#1e1e1e"/>
+    <!-- Headlights (bright, GO!) -->
+    <ellipse cx="94"  cy="-2" rx="9" ry="11" fill="#FFE088" opacity="1" filter="url(#lightGlow)"/>
+    <ellipse cx="-100" cy="-2" rx="7" ry="9"  fill="#CC1100" opacity="0.9" filter="url(#neonGlow)"/>
+    <!-- Exhaust flames (launch!) -->
+    <path d="M -106,10 Q -125,6 -120,18 Q -115,28 -106,22 Z" fill="#FF6600" opacity="0.9" filter="url(#neonGlow)"/>
+    <path d="M -106,14 Q -130,10 -126,24 Q -120,35 -106,26 Z" fill="#FFAA00" opacity="0.7" filter="url(#neonGlow)"/>
+  </g>
+
+  <!-- AI Opponent Car (slight ahead, left lane) -->
+  <g transform="translate(295, 560)" opacity="0.85">
+    <ellipse cx="0" cy="22" rx="78" ry="10" fill="#000000" opacity="0.5"/>
+    <path d="M -76,20 L -80,4 L -60,-8 L -40,-15 L 2,-20 L 42,-17 L 62,-6 L 74,4 L 76,20 Z"
+          fill="#2a1408" stroke="#3a1e0a" stroke-width="1.5"/>
+    <path d="M -32,-15 L -20,-38 L 20,-42 L 40,-38 L 52,-15 Z"
+          fill="#1e0e04" stroke="#2a1408" stroke-width="1"/>
+    <circle cx="-54" cy="22" r="17" fill="#0a0808" stroke="#1e1208" stroke-width="2"/>
+    <circle cx="54"  cy="22" r="17" fill="#0a0808" stroke="#1e1208" stroke-width="2"/>
+    <ellipse cx="72"  cy="-2" rx="7" ry="9"  fill="#FFDD44" opacity="0.8" filter="url(#neonGlow)"/>
+    <ellipse cx="-77" cy="-2" rx="6" ry="8"  fill="#AA1100" opacity="0.7" filter="url(#neonGlow)"/>
+  </g>
+
+  <!-- ─── CHRISTMAS TREE (right side panel) ─── -->
+  <g transform="translate(1058, 180)">
+    <!-- Tree housing background -->
+    <rect x="-52" y="-20" width="104" height="410" rx="10" fill="#0d0d0d"/>
+    <rect x="-52" y="-20" width="104" height="410" rx="10" fill="none" stroke="#333333" stroke-width="2"/>
+    <text x="0" y="-5"
+          font-family="Arial" font-size="11" fill="#666666"
+          text-anchor="middle" letter-spacing="2">XMAS TREE</text>
+
+    <!-- Pre-stage (top): dim -->
+    <circle cx="0" cy="25" r="22" fill="#111111" stroke="#333333" stroke-width="2"/>
+    <text x="0" y="30" font-family="Arial" font-size="8" fill="#444444" text-anchor="middle">PRE-STAGE</text>
+
+    <!-- Stage: lit AMBER -->
+    <circle cx="0" cy="88" r="22" fill="#FFAA00" filter="url(#lightGlow)" opacity="0.95"/>
+    <circle cx="0" cy="88" r="22" fill="none" stroke="#FFAA00" stroke-width="3" filter="url(#lightGlow)"/>
+    <text x="0" y="118" font-family="Arial" font-size="8" fill="#FFAA00" text-anchor="middle">STAGE</text>
+
+    <!-- Amber 1: lit -->
+    <circle cx="0" cy="162" r="22" fill="#FF8800" filter="url(#lightGlow)" opacity="0.95"/>
+    <circle cx="0" cy="162" r="22" fill="none" stroke="#FF8800" stroke-width="3" filter="url(#lightGlow)"/>
+
+    <!-- Amber 2: lit -->
+    <circle cx="0" cy="228" r="22" fill="#FF8800" filter="url(#lightGlow)" opacity="0.90"/>
+    <circle cx="0" cy="228" r="22" fill="none" stroke="#FF8800" stroke-width="3" filter="url(#lightGlow)"/>
+
+    <!-- Amber 3: lit (last amber just went out => GREEN lit) -->
+    <circle cx="0" cy="294" r="22" fill="#111111" stroke="#333333" stroke-width="2"/>
+
+    <!-- GREEN: LIT (GO!) -->
+    <circle cx="0" cy="360" r="28" fill="#00EE22" filter="url(#strongGlow)" opacity="1"/>
+    <circle cx="0" cy="360" r="28" fill="none" stroke="#00FF33" stroke-width="4" filter="url(#strongGlow)"/>
+    <text x="0" y="365"
+          font-family="Impact, 'Arial Black'" font-size="16"
+          fill="#FFFFFF" text-anchor="middle"
+          filter="url(#lightGlow)">GO!</text>
+  </g>
+
+  <!-- ─── TIMING PANEL (left side) ─── -->
+  <g transform="translate(68, 200)">
+    <rect x="-58" y="-16" width="116" height="320" rx="8" fill="#0a0a0a" opacity="0.92"/>
+    <rect x="-58" y="-16" width="116" height="320" rx="8" fill="none" stroke="#FF6600" stroke-width="1.5" opacity="0.6"/>
+
+    <text x="0" y="4"
+          font-family="Arial" font-size="11" fill="#FF6600"
+          text-anchor="middle" letter-spacing="3">TIMING</text>
+    <line x1="-48" y1="12" x2="48" y2="12" stroke="#333333" stroke-width="1"/>
+
+    <!-- Reaction time -->
+    <text x="0" y="40"  font-family="Arial" font-size="10" fill="#888888" text-anchor="middle" letter-spacing="2">REACTION</text>
+    <text x="0" y="60"  font-family="'Courier New',monospace" font-size="22" font-weight="bold" fill="#00EE22" text-anchor="middle" filter="url(#neonGlow)">0.412</text>
+    <text x="0" y="74"  font-family="Arial" font-size="9"  fill="#555555" text-anchor="middle">seconds</text>
+    <line x1="-48" y1="82" x2="48" y2="82" stroke="#222222" stroke-width="1"/>
+
+    <!-- Elapsed time -->
+    <text x="0" y="105" font-family="Arial" font-size="10" fill="#888888" text-anchor="middle" letter-spacing="2">ELAPSED</text>
+    <text x="0" y="128" font-family="'Courier New',monospace" font-size="22" font-weight="bold" fill="#FFCC00" text-anchor="middle" filter="url(#neonGlow)">10.248</text>
+    <text x="0" y="142" font-family="Arial" font-size="9"  fill="#555555" text-anchor="middle">seconds</text>
+    <line x1="-48" y1="150" x2="48" y2="150" stroke="#222222" stroke-width="1"/>
+
+    <!-- Trap speed -->
+    <text x="0" y="174" font-family="Arial" font-size="10" fill="#888888" text-anchor="middle" letter-spacing="2">TRAP SPEED</text>
+    <text x="0" y="196" font-family="'Courier New',monospace" font-size="22" font-weight="bold" fill="#FF6600" text-anchor="middle" filter="url(#neonGlow)">213</text>
+    <text x="0" y="212" font-family="Arial" font-size="9"  fill="#555555" text-anchor="middle">km/h</text>
+    <line x1="-48" y1="220" x2="48" y2="220" stroke="#222222" stroke-width="1"/>
+
+    <!-- Opponent ET -->
+    <text x="0" y="244" font-family="Arial" font-size="10" fill="#888888" text-anchor="middle" letter-spacing="1">OPP. ET</text>
+    <text x="0" y="264" font-family="'Courier New',monospace" font-size="20" fill="#CC4400" text-anchor="middle">10.581</text>
+    <text x="0" y="278" font-family="Arial" font-size="9"  fill="#555555" text-anchor="middle">seconds</text>
+
+    <line x1="-48" y1="286" x2="48" y2="286" stroke="#333333" stroke-width="1"/>
+    <text x="0" y="302" font-family="Arial" font-size="11" font-weight="bold"
+          fill="#00EE22" text-anchor="middle"
+          filter="url(#neonGlow)">W I N !</text>
+  </g>
+
+  <!-- ─── HUD TOP ─── -->
+
+  <!-- Gear display -->
+  <g transform="translate(640, 62)">
+    <rect x="-32" y="-26" width="64" height="50" rx="6" fill="#000000" opacity="0.82"/>
+    <rect x="-32" y="-26" width="64" height="50" rx="6" fill="none" stroke="#FF6600" stroke-width="1.5" opacity="0.7"/>
+    <text x="0" y="14"
+          font-family="Impact, 'Arial Black', sans-serif"
+          font-size="40" fill="#FF6600" text-anchor="middle"
+          filter="url(#neonGlow)">1</text>
+  </g>
+
+  <!-- Speed bar at top of screen -->
+  <g transform="translate(640, 115)">
+    <rect x="-220" y="-14" width="440" height="28" rx="6" fill="#000000" opacity="0.78"/>
+    <rect x="-220" y="-14" width="440" height="28" rx="6" fill="none" stroke="#333333" stroke-width="1"/>
+    <!-- Speed bar fill -->
+    <rect x="-218" y="-12" width="88"  height="24" rx="5" fill="#FF6600" opacity="0.9" filter="url(#neonGlow)"/>
+    <text x="0" y="8"
+          font-family="'Courier New',monospace"
+          font-size="18" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">082 km/h</text>
+  </g>
+
+  <!-- Boost/Rev indicators (centre top) -->
+  <g transform="translate(490, 115)">
+    <rect x="-62" y="-14" width="124" height="28" rx="5" fill="#000000" opacity="0.75"/>
+    <text x="-40" y="5" font-family="Arial" font-size="10" fill="#888888">RPM</text>
+    <text x="40" y="5"  font-family="'Courier New',monospace" font-size="16" font-weight="bold" fill="#FFAA00" text-anchor="end" filter="url(#neonGlow)">4800</text>
+  </g>
+  <g transform="translate(790, 115)">
+    <rect x="-62" y="-14" width="124" height="28" rx="5" fill="#000000" opacity="0.75"/>
+    <text x="-40" y="5" font-family="Arial" font-size="10" fill="#888888">BOOST</text>
+    <text x="40" y="5"  font-family="'Courier New',monospace" font-size="16" font-weight="bold" fill="#FF6600" text-anchor="end" filter="url(#neonGlow)">8 PSI</text>
+  </g>
+
+  <!-- Mode label -->
+  <g transform="translate(640, 706)">
+    <text x="0" y="0"
+          font-family="Arial" font-size="13" fill="#444444"
+          text-anchor="middle" letter-spacing="3">DRAG RACE  &#x2022;  CALDER PARK DRAG STRIP</text>
+  </g>
+
+  <!-- Green flash overlay (GO! moment) -->
+  <rect width="1280" height="720" fill="#00FF22" opacity="0.04"/>
+</svg>
