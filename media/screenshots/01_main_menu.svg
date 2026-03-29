@@ -1,0 +1,216 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#03030f"/>
+      <stop offset="65%" stop-color="#0d0820"/>
+      <stop offset="100%" stop-color="#3d1500"/>
+    </linearGradient>
+    <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0e00"/>
+      <stop offset="100%" stop-color="#080300"/>
+    </linearGradient>
+    <radialGradient id="titleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6600" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#FF6600" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="smokeA" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#bbbbbb" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#888888" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="smokeB" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#dddddd" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#aaaaaa" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bigGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1280" height="720" fill="url(#skyGrad)"/>
+
+  <!-- Stars -->
+  <g fill="white">
+    <circle cx="48" cy="28" r="1.2"/><circle cx="130" cy="12" r="0.8"/><circle cx="210" cy="50" r="1.5"/>
+    <circle cx="310" cy="18" r="1.0"/><circle cx="395" cy="60" r="1.2"/><circle cx="475" cy="8"  r="0.8"/>
+    <circle cx="555" cy="38" r="1.0"/><circle cx="625" cy="22" r="1.3"/><circle cx="715" cy="45" r="0.9"/>
+    <circle cx="800" cy="10" r="1.1"/><circle cx="875" cy="55" r="1.4"/><circle cx="955" cy="20" r="0.8"/>
+    <circle cx="1035" cy="40" r="1.2"/><circle cx="1115" cy="15" r="1.0"/><circle cx="1200" cy="48" r="1.5"/>
+    <circle cx="165" cy="82" r="0.9"/><circle cx="290" cy="75" r="1.1"/><circle cx="430" cy="90" r="0.8"/>
+    <circle cx="570" cy="68" r="1.3"/><circle cx="710" cy="95" r="0.7"/><circle cx="850" cy="78" r="1.2"/>
+    <circle cx="990" cy="85" r="0.9"/><circle cx="1130" cy="70" r="1.0"/><circle cx="1255" cy="32" r="0.8"/>
+    <circle cx="72"  cy="115" r="1.1"/><circle cx="345" cy="108" r="0.8"/><circle cx="645" cy="98" r="1.4"/>
+    <circle cx="1055" cy="105" r="1.0"/><circle cx="1195" cy="88" r="0.8"/>
+  </g>
+
+  <!-- Horizon glow -->
+  <ellipse cx="640" cy="500" rx="900" ry="180" fill="#3d1500" opacity="0.4"/>
+
+  <!-- Stadium light towers (distant) -->
+  <g opacity="0.25" fill="#666666">
+    <rect x="145" y="380" width="7" height="130"/>
+    <rect x="235" y="360" width="7" height="150"/>
+    <rect x="1048" y="368" width="7" height="142"/>
+    <rect x="1138" y="380" width="7" height="130"/>
+  </g>
+  <g opacity="0.35">
+    <ellipse cx="148" cy="375" rx="18" ry="10" fill="#FFEE88"/>
+    <ellipse cx="238" cy="355" rx="15" ry="8"  fill="#FFEE88"/>
+    <ellipse cx="1051" cy="363" rx="18" ry="10" fill="#FFEE88"/>
+    <ellipse cx="1141" cy="375" rx="15" ry="8"  fill="#FFEE88"/>
+  </g>
+
+  <!-- Tarmac ground -->
+  <rect x="0" y="550" width="1280" height="170" fill="url(#groundGrad)"/>
+
+  <!-- Road centre lines (perspective) -->
+  <g stroke="#2a2a2a" stroke-width="3" opacity="0.6">
+    <line x1="0" y1="720" x2="600" y2="550"/>
+    <line x1="1280" y1="720" x2="680" y2="550"/>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="18" fill="none" opacity="0.5">
+    <!-- Tyre skid marks left pair -->
+    <path d="M 200,720 Q 330,660 450,600 Q 510,572 530,558" stroke-linecap="round"/>
+    <path d="M 250,720 Q 375,658 490,600 Q 546,574 563,559" stroke-linecap="round"/>
+    <!-- Tyre skid marks right pair -->
+    <path d="M 720,720 Q 760,680 780,645 Q 800,605 812,578 Q 820,563 825,555" stroke-linecap="round"/>
+    <path d="M 762,720 Q 800,680 818,645 Q 836,605 847,578 Q 854,563 858,555" stroke-linecap="round"/>
+  </g>
+
+  <!-- Car silhouette (Commodore-style, RWD burnout position) -->
+  <g transform="translate(740,500)" opacity="0.88">
+    <!-- Shadow -->
+    <ellipse cx="0" cy="68" rx="135" ry="18" fill="#000000" opacity="0.5"/>
+    <!-- Body -->
+    <path d="M -130,55 L -138,8 L -95,-18 L -65,-33 L 5,-42 L 68,-38 L 100,-18 L 118,8 L 122,55 Z"
+          fill="#181818" stroke="#2e2e2e" stroke-width="2"/>
+    <!-- Roof / cabin -->
+    <path d="M -55,-33 L -32,-72 L 32,-77 L 65,-72 L 88,-33 Z"
+          fill="#121212" stroke="#2a2a2a" stroke-width="1.5"/>
+    <!-- Windscreen -->
+    <path d="M -50,-33 L -30,-68 L 30,-73 L 62,-68 L 83,-33 Z"
+          fill="#0d1e2a" stroke="#1a3040" stroke-width="1" opacity="0.8"/>
+    <!-- Rear window -->
+    <path d="M -55,-33 L -35,-68 L -32,-72 L -28,-67 L -44,-33 Z"
+          fill="#0d1e2a" opacity="0.5"/>
+    <!-- Rear wheel arch -->
+    <ellipse cx="-88" cy="57" rx="31" ry="8" fill="#111" stroke="#333" stroke-width="1"/>
+    <!-- Front wheel arch -->
+    <ellipse cx="86" cy="57" rx="31" ry="8" fill="#111" stroke="#333" stroke-width="1"/>
+    <!-- Rear wheel (spinning blur = flat) -->
+    <circle cx="-88" cy="57" r="27" fill="#0d0d0d" stroke="#3a3a3a" stroke-width="3"/>
+    <circle cx="-88" cy="57" r="19" fill="#1a1a1a"/>
+    <circle cx="-88" cy="57" r="9"  fill="#252525"/>
+    <!-- Front wheel (locked, flat) -->
+    <circle cx="86" cy="57" r="27" fill="#0d0d0d" stroke="#3a3a3a" stroke-width="3"/>
+    <circle cx="86" cy="57" r="19" fill="#1a1a1a"/>
+    <circle cx="86" cy="57" r="9"  fill="#252525"/>
+    <!-- Headlights -->
+    <ellipse cx="116" cy="-2" rx="9" ry="13" fill="#FFE066" opacity="0.9" filter="url(#softGlow)"/>
+    <!-- Tail lights -->
+    <ellipse cx="-133" cy="-2" rx="8" ry="12" fill="#CC2200" opacity="0.8" filter="url(#softGlow)"/>
+    <!-- Exhaust tip -->
+    <rect x="-138" y="30" width="12" height="6" rx="3" fill="#333"/>
+  </g>
+
+  <!-- Burnout smoke (tyre smoke billowing left) -->
+  <ellipse cx="575" cy="545" rx="195" ry="75"  fill="url(#smokeA)" opacity="0.85"/>
+  <ellipse cx="530" cy="520" rx="145" ry="55"  fill="url(#smokeB)" opacity="0.75"/>
+  <ellipse cx="495" cy="500" rx="105" ry="42"  fill="url(#smokeA)" opacity="0.65"/>
+  <ellipse cx="455" cy="483" rx="75"  ry="32"  fill="url(#smokeB)" opacity="0.55"/>
+  <ellipse cx="420" cy="465" rx="52"  ry="24"  fill="url(#smokeA)" opacity="0.40"/>
+
+  <!-- Title glow ellipse -->
+  <ellipse cx="640" cy="185" rx="450" ry="110" fill="url(#titleGlow)"/>
+
+  <!-- Title: SEND-IT -->
+  <text x="640" y="208"
+        font-family="Impact, 'Arial Black', sans-serif"
+        font-size="138"
+        fill="#FF6600"
+        text-anchor="middle"
+        letter-spacing="18"
+        filter="url(#bigGlow)">SEND-IT</text>
+
+  <!-- Subtitle bar -->
+  <rect x="300" y="225" width="680" height="2" fill="#FF6600" opacity="0.4"/>
+  <text x="640" y="254"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="21"
+        fill="#FFAA55"
+        text-anchor="middle"
+        letter-spacing="9"
+        font-style="italic">AUSTRALIAN BURNOUT SIMULATOR</text>
+  <rect x="300" y="260" width="680" height="2" fill="#FF6600" opacity="0.4"/>
+
+  <!-- Menu panel -->
+  <rect x="430" y="290" width="420" height="250" rx="6" fill="#000000" opacity="0.65"/>
+  <rect x="430" y="290" width="420" height="250" rx="6" fill="none" stroke="#FF6600" stroke-width="1" opacity="0.5"/>
+
+  <!-- Selected menu item highlight -->
+  <rect x="440" y="298" width="400" height="40" rx="4" fill="#FF6600" opacity="0.85"/>
+  <text x="640" y="324"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="17" font-weight="bold"
+        fill="#000000" text-anchor="middle" letter-spacing="3">&#x1F525;  BURNOUT COMPETITION</text>
+
+  <!-- Other menu items -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#BBBBBB" text-anchor="middle" letter-spacing="2">
+    <text x="640" y="367">&#x1F3C1;  DRAG RACE</text>
+    <line x1="460" y1="375" x2="820" y2="375" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="640" y="408">&#x1F3C6;  CIRCUIT RACE</text>
+    <line x1="460" y1="416" x2="820" y2="416" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="640" y="449">&#x1F697;  FREE ROAM</text>
+    <line x1="460" y1="457" x2="820" y2="457" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="640" y="490">&#x1F527;  GARAGE &amp; CUSTOMISE</text>
+    <line x1="460" y1="498" x2="820" y2="498" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="640" y="529">&#x2699;&#xFE0F;  SETTINGS</text>
+  </g>
+
+  <!-- Indicator arrows -->
+  <polygon points="442,318 452,324 442,330" fill="#000000"/>
+  <polygon points="838,318 828,324 838,330" fill="#000000"/>
+
+  <!-- Blinking "PRESS ANY KEY" text -->
+  <text x="640" y="570"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="14" fill="#FF6600"
+        text-anchor="middle" letter-spacing="4">PRESS ANY KEY TO START</text>
+
+  <!-- Version / copyright -->
+  <text x="640" y="708"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="11" fill="#444444" text-anchor="middle">
+    v0.1.0 EARLY ACCESS  &#x2022;  © 2026 shutyourole365  &#x2022;  Built with Unity 2022.3 LTS
+  </text>
+
+  <!-- Aus flag (corner) -->
+  <g transform="translate(22, 688)" opacity="0.55">
+    <rect width="54" height="27" rx="2" fill="#00247D"/>
+    <line x1="0" y1="0" x2="27" y2="13.5" stroke="white" stroke-width="2.5"/>
+    <line x1="27" y1="0" x2="0"  y2="13.5" stroke="white" stroke-width="2.5"/>
+    <line x1="0" y1="13.5" x2="27" y2="27" stroke="white" stroke-width="2.5"/>
+    <line x1="27" y1="13.5" x2="0"  y2="27" stroke="white" stroke-width="2.5"/>
+    <!-- Stars (simplified) -->
+    <circle cx="40" cy="7"  r="2.2" fill="white"/>
+    <circle cx="46" cy="18" r="2.2" fill="white"/>
+    <circle cx="38" cy="22" r="1.6" fill="white"/>
+  </g>
+
+  <!-- Top-right: Settings icon placeholder -->
+  <g transform="translate(1230, 18)" opacity="0.6">
+    <circle cx="15" cy="15" r="13" fill="#111111" stroke="#333333" stroke-width="1"/>
+    <circle cx="15" cy="15" r="5"  fill="none" stroke="#888888" stroke-width="2"/>
+    <g stroke="#888888" stroke-width="2">
+      <line x1="15" y1="4"  x2="15" y2="8"/>
+      <line x1="15" y1="22" x2="15" y2="26"/>
+      <line x1="4"  y1="15" x2="8"  y2="15"/>
+      <line x1="22" y1="15" x2="26" y2="15"/>
+    </g>
+  </g>
+</svg>

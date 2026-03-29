@@ -1,0 +1,419 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="garageBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080810"/>
+      <stop offset="100%" stop-color="#0d0d14"/>
+    </linearGradient>
+    <radialGradient id="spotLight" cx="50%" cy="0%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="carGlow" cx="50%" cy="80%" r="60%">
+      <stop offset="0%" stop-color="#FF6600" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#FF6600" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="floorReflect" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#FF6600" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="panelGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="carShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <!-- Metallic paint gradient for the car -->
+    <linearGradient id="carPaint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CC3300"/>
+      <stop offset="40%" stop-color="#FF5500"/>
+      <stop offset="70%" stop-color="#CC3300"/>
+      <stop offset="100%" stop-color="#881800"/>
+    </linearGradient>
+    <linearGradient id="carRoofPaint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF4400"/>
+      <stop offset="100%" stop-color="#AA2200"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#garageBg)"/>
+
+  <!-- Garage floor tile pattern -->
+  <g stroke="#111118" stroke-width="1" opacity="0.5">
+    <line x1="0"    y1="560" x2="1280" y2="560"/>
+    <line x1="0"    y1="600" x2="1280" y2="600"/>
+    <line x1="0"    y1="640" x2="1280" y2="640"/>
+    <line x1="0"    y1="680" x2="1280" y2="680"/>
+    <line x1="0"    y1="720" x2="1280" y2="720"/>
+    <line x1="100"  y1="560" x2="100"  y2="720"/>
+    <line x1="220"  y1="560" x2="220"  y2="720"/>
+    <line x1="340"  y1="560" x2="340"  y2="720"/>
+    <line x1="460"  y1="560" x2="460"  y2="720"/>
+    <line x1="580"  y1="560" x2="580"  y2="720"/>
+    <line x1="700"  y1="560" x2="700"  y2="720"/>
+    <line x1="820"  y1="560" x2="820"  y2="720"/>
+    <line x1="940"  y1="560" x2="940"  y2="720"/>
+    <line x1="1060" y1="560" x2="1060" y2="720"/>
+    <line x1="1180" y1="560" x2="1180" y2="720"/>
+  </g>
+  <rect x="0" y="555" width="1280" height="5" fill="#FF6600" opacity="0.08"/>
+
+  <!-- Turntable platform -->
+  <ellipse cx="640" cy="560" rx="320" ry="40" fill="#0f0f14"/>
+  <ellipse cx="640" cy="560" rx="320" ry="40" fill="none" stroke="#FF6600" stroke-width="2" opacity="0.4" filter="url(#panelGlow)"/>
+  <!-- Platform inner ring -->
+  <ellipse cx="640" cy="560" rx="280" ry="34" fill="none" stroke="#FF6600" stroke-width="1" opacity="0.2"/>
+  <!-- Platform markings -->
+  <line x1="320" y1="560" x2="960" y2="560" stroke="#FF6600" stroke-width="1" opacity="0.15"/>
+  <line x1="640" y1="520" x2="640" y2="600" stroke="#FF6600" stroke-width="1" opacity="0.15"/>
+
+  <!-- Spotlights from above -->
+  <ellipse cx="640" cy="100" rx="400" ry="80" fill="url(#spotLight)"/>
+
+  <!-- Car glow on floor -->
+  <ellipse cx="640" cy="555" rx="200" ry="25" fill="url(#floorReflect)"/>
+
+  <!-- ─── CAR MODEL: VE Commodore SS (Red Metallic) ─── -->
+  <g transform="translate(640, 490)">
+    <!-- Drop shadow -->
+    <ellipse cx="0" cy="75" rx="180" ry="22" fill="#000000" opacity="0.75" filter="url(#carShadow)"/>
+
+    <!-- Body main -->
+    <path d="M -175,70 L -185,12 L -132,-22 L -85,-40 L 6,-52 L 90,-45 L 135,-22 L 155,12 L 160,70 Z"
+          fill="url(#carPaint)" stroke="#AA2200" stroke-width="1.5"/>
+
+    <!-- Bonnet -->
+    <path d="M 6,-52 L 90,-45 L 135,-22 L 152,-5 L 155,12 L 95,8 L 5,6 L -65,8 L -75,12 L -75,-5 L -132,-22 L -85,-40 Z"
+          fill="#FF5500" stroke="#CC3300" stroke-width="1"/>
+
+    <!-- Bonnet scoop -->
+    <path d="M -20,-46 L 28,-50 L 38,-28 L -10,-26 Z" fill="#CC2200" stroke="#AA1800" stroke-width="1"/>
+
+    <!-- Cabin / roof -->
+    <path d="M -68,-40 L -40,-82 L 42,-88 L 78,-82 L 100,-40 Z"
+          fill="url(#carRoofPaint)" stroke="#AA2200" stroke-width="1.5"/>
+
+    <!-- Windscreen -->
+    <path d="M -62,-40 L -36,-79 L 40,-85 L 76,-79 L 96,-40 Z"
+          fill="#0a1428" stroke="#0d1a30" stroke-width="1" opacity="0.88"/>
+
+    <!-- Side windows -->
+    <path d="M -68,-40 L -60,-70 L -36,-79 L -62,-40 Z"
+          fill="#0a1428" opacity="0.7"/>
+    <path d="M 100,-40 L 94,-68 L 76,-79 L 96,-40 Z"
+          fill="#0a1428" opacity="0.7"/>
+
+    <!-- Door panel highlight (metallic sheen) -->
+    <path d="M -80,-5 L -75,55 L 80,55 L 85,-5 Z" fill="#FF6622" opacity="0.15"/>
+
+    <!-- Side mirror (left) -->
+    <path d="M -138,-18 L -155,-28 L -162,-10 L -145,-4 Z" fill="#CC3300" stroke="#AA2200" stroke-width="1"/>
+
+    <!-- Rear wheel arch -->
+    <ellipse cx="-118" cy="68" rx="38" ry="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+    <!-- Front wheel arch -->
+    <ellipse cx="112"  cy="68" rx="38" ry="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+
+    <!-- Rear wheel -->
+    <circle cx="-118" cy="68" r="34" fill="#0c0c0c" stroke="#333333" stroke-width="3"/>
+    <circle cx="-118" cy="68" r="24" fill="#181818"/>
+    <circle cx="-118" cy="68" r="14" fill="#1e1e1e"/>
+    <!-- Wheel spokes (rear) -->
+    <g stroke="#444444" stroke-width="2">
+      <line x1="-118" y1="54" x2="-118" y2="82"/>
+      <line x1="-104" y1="68" x2="-132" y2="68"/>
+      <line x1="-108" y1="58" x2="-128" y2="78"/>
+      <line x1="-108" y1="78" x2="-128" y2="58"/>
+    </g>
+    <circle cx="-118" cy="68" r="6" fill="#FF6600" opacity="0.8"/>
+
+    <!-- Front wheel -->
+    <circle cx="112"  cy="68" r="34" fill="#0c0c0c" stroke="#333333" stroke-width="3"/>
+    <circle cx="112"  cy="68" r="24" fill="#181818"/>
+    <circle cx="112"  cy="68" r="14" fill="#1e1e1e"/>
+    <!-- Wheel spokes (front) -->
+    <g stroke="#444444" stroke-width="2">
+      <line x1="112" y1="54" x2="112" y2="82"/>
+      <line x1="126" y1="68" x2="98"  y2="68"/>
+      <line x1="122" y1="58" x2="102" y2="78"/>
+      <line x1="122" y1="78" x2="102" y2="58"/>
+    </g>
+    <circle cx="112" cy="68" r="6" fill="#FF6600" opacity="0.8"/>
+
+    <!-- Headlights (off) -->
+    <path d="M 148,-6 L 158,-18 L 160,-2 L 150,8 Z" fill="#FFEE88" opacity="0.3"/>
+    <!-- Tail lights (off) -->
+    <path d="M -180,-6 L -185,-18 L -185,10 L -178,18 Z" fill="#CC2200" opacity="0.3"/>
+
+    <!-- Rear diffuser -->
+    <rect x="-178" y="40" width="10" height="20" rx="2" fill="#1a1a1a"/>
+
+    <!-- Front spoiler / lip -->
+    <path d="M 152,35 L 162,42 L 162,55 L 155,50 Z" fill="#AA2200"/>
+  </g>
+
+  <!-- Car glow beneath -->
+  <ellipse cx="640" cy="558" rx="220" ry="30" fill="url(#carGlow)"/>
+
+  <!-- ─── LEFT PANEL: Car Stats ─── -->
+  <rect x="10" y="30" width="290" height="500" rx="8" fill="#0a0a12" opacity="0.92"/>
+  <rect x="10" y="30" width="290" height="500" rx="8" fill="none" stroke="#FF6600" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Panel header -->
+  <rect x="10" y="30" width="290" height="48" rx="8" fill="#FF6600" opacity="0.15"/>
+  <rect x="10" y="30" width="290" height="48" rx="0" fill="none"/>
+  <text x="155" y="60"
+        font-family="Impact, 'Arial Black', sans-serif"
+        font-size="20" fill="#FF6600"
+        text-anchor="middle" letter-spacing="3"
+        filter="url(#panelGlow)">VE COMMODORE SS</text>
+
+  <!-- Car year/info -->
+  <text x="155" y="104" font-family="Arial" font-size="13" fill="#888888" text-anchor="middle">2006 – 6.0L LS2 V8 RWD</text>
+  <line x1="28" y1="112" x2="282" y2="112" stroke="#333333" stroke-width="1"/>
+
+  <!-- Stats list -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14">
+    <!-- Power -->
+    <text x="30"  y="138" fill="#888888">POWER</text>
+    <text x="282" y="138" fill="#FFFFFF" text-anchor="end">270 kW</text>
+    <rect x="30" y="142" width="252" height="4" rx="2" fill="#111111"/>
+    <rect x="30" y="142" width="190" height="4" rx="2" fill="#FF6600" opacity="0.8"/>
+
+    <!-- Torque -->
+    <text x="30"  y="168" fill="#888888">TORQUE</text>
+    <text x="282" y="168" fill="#FFFFFF" text-anchor="end">530 Nm</text>
+    <rect x="30" y="172" width="252" height="4" rx="2" fill="#111111"/>
+    <rect x="30" y="172" width="218" height="4" rx="2" fill="#FFAA00" opacity="0.8"/>
+
+    <!-- Top Speed -->
+    <text x="30"  y="198" fill="#888888">TOP SPEED</text>
+    <text x="282" y="198" fill="#FFFFFF" text-anchor="end">255 km/h</text>
+    <rect x="30" y="202" width="252" height="4" rx="2" fill="#111111"/>
+    <rect x="30" y="202" width="200" height="4" rx="2" fill="#44AAFF" opacity="0.8"/>
+
+    <!-- Weight -->
+    <text x="30"  y="228" fill="#888888">WEIGHT</text>
+    <text x="282" y="228" fill="#FFFFFF" text-anchor="end">1,680 kg</text>
+    <rect x="30" y="232" width="252" height="4" rx="2" fill="#111111"/>
+    <rect x="30" y="232" width="145" height="4" rx="2" fill="#44CC44" opacity="0.8"/>
+
+    <!-- 0-100 -->
+    <text x="30"  y="258" fill="#888888">0–100 km/h</text>
+    <text x="282" y="258" fill="#FFFFFF" text-anchor="end">5.0 sec</text>
+    <rect x="30" y="262" width="252" height="4" rx="2" fill="#111111"/>
+    <rect x="30" y="262" width="220" height="4" rx="2" fill="#FF4444" opacity="0.8"/>
+
+    <!-- Drivetrain -->
+    <text x="30"  y="292" fill="#888888">DRIVETRAIN</text>
+    <text x="282" y="292" fill="#FFFFFF" text-anchor="end">RWD 6-Spd Manual</text>
+
+    <!-- Induction -->
+    <text x="30"  y="318" fill="#888888">INDUCTION</text>
+    <text x="282" y="318" fill="#FFFFFF" text-anchor="end">Naturally Aspirated</text>
+  </g>
+
+  <line x1="28" y1="332" x2="282" y2="332" stroke="#333333" stroke-width="1"/>
+
+  <!-- Performance parts fitted -->
+  <text x="30" y="356" font-family="Arial" font-size="12" fill="#FF6600">FITTED UPGRADES</text>
+  <g font-family="Arial" font-size="12" fill="#888888">
+    <text x="30" y="378">&#x2713; Stage 2 Cam Kit</text>
+    <text x="30" y="398">&#x2713; Cold Air Intake</text>
+    <text x="30" y="418">&#x2713; 3&quot; Exhaust System</text>
+    <text x="30" y="438">&#x2713; Coilover Suspension</text>
+    <text x="30" y="458">&#x2713; 6-Pot Brake Kit</text>
+    <text x="30" y="478">&#x2713; 275/40R18 Rear Tyres</text>
+  </g>
+
+  <!-- Value -->
+  <line x1="28" y1="492" x2="282" y2="492" stroke="#333333" stroke-width="1"/>
+  <text x="30"  y="516" font-family="Arial" font-size="13" fill="#888888">VALUE</text>
+  <text x="282" y="516" font-family="'Courier New',monospace" font-size="16" font-weight="bold" fill="#FFCC00" text-anchor="end" filter="url(#panelGlow)">$38,500</text>
+
+  <!-- ─── RIGHT PANEL: Customisation ─── -->
+  <rect x="980" y="30" width="290" height="500" rx="8" fill="#0a0a12" opacity="0.92"/>
+  <rect x="980" y="30" width="290" height="500" rx="8" fill="none" stroke="#FF6600" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Tab bar -->
+  <rect x="980" y="30" width="290" height="42" rx="8" fill="#111118"/>
+  <!-- Active tab: PAINT -->
+  <rect x="985" y="34" width="60" height="34" rx="5" fill="#FF6600" opacity="0.9"/>
+  <text x="1015" y="56" font-family="Arial" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">PAINT</text>
+  <!-- Other tabs -->
+  <text x="1090" y="56" font-family="Arial" font-size="12" fill="#666666" text-anchor="middle">BODY</text>
+  <text x="1160" y="56" font-family="Arial" font-size="12" fill="#666666" text-anchor="middle">WHEELS</text>
+  <text x="1235" y="56" font-family="Arial" font-size="12" fill="#666666" text-anchor="middle">PERF.</text>
+
+  <!-- Paint section header -->
+  <text x="998" y="90" font-family="Arial" font-size="12" fill="#888888" letter-spacing="2">COLOUR &amp; FINISH</text>
+  <line x1="998" y1="96" x2="1262" y2="96" stroke="#333333" stroke-width="1"/>
+
+  <!-- Colour swatches -->
+  <g>
+    <!-- Row 1 -->
+    <circle cx="1016" cy="122" r="18" fill="#CC2200" stroke="#FF3300" stroke-width="3" filter="url(#panelGlow)"/>
+    <circle cx="1060" cy="122" r="16" fill="#0033CC"/>
+    <circle cx="1100" cy="122" r="16" fill="#006622"/>
+    <circle cx="1140" cy="122" r="16" fill="#FFCC00"/>
+    <circle cx="1180" cy="122" r="16" fill="#FFFFFF"/>
+    <circle cx="1220" cy="122" r="16" fill="#111111"/>
+    <circle cx="1256" cy="122" r="14" fill="#884400"/>
+    <!-- Row 2 -->
+    <circle cx="1016" cy="162" r="16" fill="#FF4488"/>
+    <circle cx="1056" cy="162" r="16" fill="#00CCCC"/>
+    <circle cx="1096" cy="162" r="16" fill="#8800CC"/>
+    <circle cx="1136" cy="162" r="16" fill="#FF8800"/>
+    <circle cx="1176" cy="162" r="16" fill="#888888"/>
+    <circle cx="1216" cy="162" r="16" fill="#CCAA44"/>
+    <circle cx="1256" cy="162" r="14" fill="#002244"/>
+    <!-- Selected indicator -->
+    <circle cx="1016" cy="122" r="22" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- Finish type selector -->
+  <text x="998" y="198" font-family="Arial" font-size="12" fill="#888888" letter-spacing="2">FINISH</text>
+  <line x1="998" y1="204" x2="1262" y2="204" stroke="#333333" stroke-width="1"/>
+  <g font-family="Arial" font-size="13">
+    <!-- Active: Metallic -->
+    <rect x="998" y="212" width="70"  height="28" rx="4" fill="#FF6600" opacity="0.85"/>
+    <text x="1033" y="231" fill="#000000" text-anchor="middle" font-weight="bold">Metallic</text>
+    <!-- Others -->
+    <rect x="1076" y="212" width="55" height="28" rx="4" fill="#1a1a22"/>
+    <text x="1103" y="231" fill="#666666" text-anchor="middle">Gloss</text>
+    <rect x="1139" y="212" width="50" height="28" rx="4" fill="#1a1a22"/>
+    <text x="1164" y="231" fill="#666666" text-anchor="middle">Matte</text>
+    <rect x="1197" y="212" width="48" height="28" rx="4" fill="#1a1a22"/>
+    <text x="1221" y="231" fill="#666666" text-anchor="middle">Candy</text>
+  </g>
+
+  <!-- Custom colour / HSV picker (simplified) -->
+  <text x="998" y="264" font-family="Arial" font-size="12" fill="#888888" letter-spacing="2">CUSTOM COLOUR</text>
+  <line x1="998" y1="270" x2="1262" y2="270" stroke="#333333" stroke-width="1"/>
+
+  <!-- Hue bar -->
+  <defs>
+    <linearGradient id="hueBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"    stop-color="#FF0000"/>
+      <stop offset="16.6%" stop-color="#FFFF00"/>
+      <stop offset="33.3%" stop-color="#00FF00"/>
+      <stop offset="50%"   stop-color="#00FFFF"/>
+      <stop offset="66.6%" stop-color="#0000FF"/>
+      <stop offset="83.3%" stop-color="#FF00FF"/>
+      <stop offset="100%"  stop-color="#FF0000"/>
+    </linearGradient>
+  </defs>
+  <rect x="998" y="278" width="264" height="16" rx="4" fill="url(#hueBar)"/>
+  <!-- Hue cursor -->
+  <rect x="1020" y="274" width="6" height="24" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+
+  <!-- Saturation bar -->
+  <defs>
+    <linearGradient id="satBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#888888"/>
+      <stop offset="100%" stop-color="#CC2200"/>
+    </linearGradient>
+  </defs>
+  <rect x="998" y="306" width="264" height="16" rx="4" fill="url(#satBar)"/>
+  <rect x="1200" y="302" width="6" height="24" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+
+  <!-- Value bar -->
+  <defs>
+    <linearGradient id="valBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#000000"/>
+      <stop offset="100%" stop-color="#FF4400"/>
+    </linearGradient>
+  </defs>
+  <rect x="998" y="334" width="264" height="16" rx="4" fill="url(#valBar)"/>
+  <rect x="1230" y="330" width="6" height="24" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+
+  <!-- Colour labels -->
+  <g font-family="Arial" font-size="10" fill="#555555">
+    <text x="998" y="274">H</text>
+    <text x="998" y="302">S</text>
+    <text x="998" y="330">V</text>
+  </g>
+
+  <!-- Preview swatch -->
+  <rect x="1220" y="278" width="42" height="72" rx="4" fill="#CC2200" stroke="#FF3300" stroke-width="2"/>
+  <text x="1241" y="362" font-family="Arial" font-size="9" fill="#666666" text-anchor="middle">PREVIEW</text>
+
+  <!-- Decals / vinyl section -->
+  <line x1="998" y1="375" x2="1262" y2="375" stroke="#333333" stroke-width="1"/>
+  <text x="998" y="393" font-family="Arial" font-size="12" fill="#888888" letter-spacing="2">VINYL &amp; DECALS</text>
+  <g font-family="Arial" font-size="12" fill="#666666">
+    <rect x="998" y="400" width="80"  height="28" rx="4" fill="#1a1a22"/>
+    <text x="1038" y="419" fill="#666666" text-anchor="middle">Racing</text>
+    <rect x="1086" y="400" width="80"  height="28" rx="4" fill="#1a1a22"/>
+    <text x="1126" y="419" fill="#666666" text-anchor="middle">Flames</text>
+    <rect x="1174" y="400" width="86"  height="28" rx="4" fill="#1a1a22"/>
+    <text x="1217" y="419" fill="#666666" text-anchor="middle">Pinstripe</text>
+  </g>
+
+  <!-- APPLY / SAVE buttons -->
+  <rect x="998" y="448" width="120" height="36" rx="6" fill="#FF6600" opacity="0.9"/>
+  <text x="1058" y="472" font-family="Arial" font-size="14" font-weight="bold" fill="#000000" text-anchor="middle">APPLY</text>
+  <rect x="1130" y="448" width="120" height="36" rx="6" fill="#1a1a22" stroke="#555555" stroke-width="1"/>
+  <text x="1190" y="472" font-family="Arial" font-size="14" fill="#888888" text-anchor="middle">RESET</text>
+
+  <!-- Cost indicator -->
+  <text x="998" y="506" font-family="Arial" font-size="12" fill="#888888">CUSTOMISATION COST</text>
+  <text x="1262" y="506" font-family="'Courier New',monospace" font-size="14" fill="#FFCC00" text-anchor="end" filter="url(#panelGlow)">FREE</text>
+
+  <!-- ─── BOTTOM BAR ─── -->
+  <rect x="0" y="610" width="1280" height="110" fill="#060608" opacity="0.92"/>
+  <rect x="0" y="610" width="1280" height="2" fill="#FF6600" opacity="0.3"/>
+
+  <!-- Car roster (bottom strip - 5 cars) -->
+  <text x="640" y="634" font-family="Arial" font-size="11" fill="#555555" text-anchor="middle" letter-spacing="3">YOUR GARAGE  (8 CARS OWNED)</text>
+
+  <!-- Car thumbnails (simplified silhouettes) -->
+  <g opacity="0.75">
+    <!-- Car 1 (selected) -->
+    <rect x="120" y="645" width="150" height="62" rx="5" fill="#FF6600" opacity="0.15"/>
+    <rect x="120" y="645" width="150" height="62" rx="5" fill="none" stroke="#FF6600" stroke-width="1.5" filter="url(#panelGlow)"/>
+    <text x="195" y="668" font-family="Arial" font-size="10" fill="#FF6600" text-anchor="middle">VE COMMODORE SS</text>
+    <text x="195" y="685" font-family="Arial" font-size="9"  fill="#888888" text-anchor="middle">270 kW  •  RWD</text>
+    <text x="195" y="700" font-family="'Courier New',monospace" font-size="9" fill="#FFCC00" text-anchor="middle">$38,500</text>
+
+    <!-- Car 2 -->
+    <rect x="290" y="645" width="150" height="62" rx="5" fill="#111118"/>
+    <rect x="290" y="645" width="150" height="62" rx="5" fill="none" stroke="#333333" stroke-width="1"/>
+    <text x="365" y="668" font-family="Arial" font-size="10" fill="#AAAAAA" text-anchor="middle">FG FALCON XR6T</text>
+    <text x="365" y="685" font-family="Arial" font-size="9"  fill="#666666" text-anchor="middle">270 kW  •  RWD</text>
+    <text x="365" y="700" font-family="'Courier New',monospace" font-size="9" fill="#FFAA00" text-anchor="middle">$32,000</text>
+
+    <!-- Car 3 -->
+    <rect x="460" y="645" width="150" height="62" rx="5" fill="#111118"/>
+    <rect x="460" y="645" width="150" height="62" rx="5" fill="none" stroke="#333333" stroke-width="1"/>
+    <text x="535" y="668" font-family="Arial" font-size="10" fill="#AAAAAA" text-anchor="middle">VK COMMODORE</text>
+    <text x="535" y="685" font-family="Arial" font-size="9"  fill="#666666" text-anchor="middle">150 kW  •  RWD</text>
+    <text x="535" y="700" font-family="'Courier New',monospace" font-size="9" fill="#FFAA00" text-anchor="middle">$18,000</text>
+
+    <!-- Car 4 -->
+    <rect x="630" y="645" width="150" height="62" rx="5" fill="#111118"/>
+    <rect x="630" y="645" width="150" height="62" rx="5" fill="none" stroke="#333333" stroke-width="1"/>
+    <text x="705" y="668" font-family="Arial" font-size="10" fill="#AAAAAA" text-anchor="middle">HSV GTSR W1</text>
+    <text x="705" y="685" font-family="Arial" font-size="9"  fill="#666666" text-anchor="middle">474 kW  •  RWD</text>
+    <text x="705" y="700" font-family="'Courier New',monospace" font-size="9" fill="#FFAA00" text-anchor="middle">$120,000</text>
+
+    <!-- Car 5 -->
+    <rect x="800" y="645" width="150" height="62" rx="5" fill="#111118"/>
+    <rect x="800" y="645" width="150" height="62" rx="5" fill="none" stroke="#333333" stroke-width="1"/>
+    <text x="875" y="668" font-family="Arial" font-size="10" fill="#AAAAAA" text-anchor="middle">XY FALCON GT</text>
+    <text x="875" y="685" font-family="Arial" font-size="9"  fill="#666666" text-anchor="middle">224 kW  •  RWD</text>
+    <text x="875" y="700" font-family="'Courier New',monospace" font-size="9" fill="#FFAA00" text-anchor="middle">$45,000</text>
+  </g>
+
+  <!-- Wallet / currency display -->
+  <g transform="translate(1190, 660)">
+    <rect x="-80" y="-20" width="160" height="50" rx="6" fill="#111118"/>
+    <rect x="-80" y="-20" width="160" height="50" rx="6" fill="none" stroke="#FFCC00" stroke-width="1" opacity="0.5"/>
+    <text x="0" y="-4" font-family="Arial" font-size="11" fill="#888888" text-anchor="middle" letter-spacing="2">WALLET</text>
+    <text x="0" y="22" font-family="'Courier New',monospace" font-size="20" font-weight="bold" fill="#FFCC00" text-anchor="middle" filter="url(#panelGlow)">$84,250</text>
+  </g>
+
+  <!-- Rotate buttons (hint) -->
+  <text x="640" y="600" font-family="Arial" font-size="11" fill="#444444" text-anchor="middle" letter-spacing="2">[ Q ] ROTATE LEFT  ·  [ E ] ROTATE RIGHT  ·  [ SCROLL ] ZOOM</text>
+</svg>

@@ -73,6 +73,9 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.LogError($"[SaveSystem] Save failed: {e.Message}");
         }
+
+        // Mirror to cloud (fire-and-forget; safe if UGS not ready)
+        _ = CloudSyncManager.Instance?.PushToCloudAsync();
     }
 
     // ─── Load ─────────────────────────────────────────────────────────────────
@@ -195,15 +198,18 @@ public class SaveSystem : MonoBehaviour
     {
         if (data == null) data = NewGame();
 
-        var record = data.lapRecords.Find(r => r.trackId == trackId);
+        var record   = data.lapRecords.Find(r => r.trackId == trackId);
+        bool isNewPB = record == null || lapTime < record.bestLap;
+
         if (record == null)
-        {
             data.lapRecords.Add(new TrackRecord { trackId = trackId, bestLap = lapTime });
-        }
-        else if (lapTime < record.bestLap)
-        {
+        else if (isNewPB)
             record.bestLap = lapTime;
-        }
+
+        // Submit to global leaderboard only when a new personal best is set
+        if (isNewPB)
+            _ = LeaderboardManager.Instance?.SubmitCircuitLapAsync(trackId, lapTime);
+
         Save();
     }
 
@@ -231,9 +237,13 @@ public class SaveSystem : MonoBehaviour
         // Update best ET
         if (result.playerET < data.bestDragET && !result.isFoul)
         {
-            data.bestDragET = result.playerET;
+            data.bestDragET    = result.playerET;
             data.bestTrapSpeed = result.playerTrapKPH;
         }
+
+        // Submit to global leaderboard if not a foul
+        if (!result.isFoul)
+            _ = LeaderboardManager.Instance?.SubmitDragETAsync(result.playerET);
 
         Save();
     }
@@ -249,6 +259,74 @@ public class SaveSystem : MonoBehaviour
     public GameSettings LoadSettings()
     {
         return data?.settings ?? new GameSettings();
+    }
+
+    // ─── Cloud integration ────────────────────────────────────────────────────
+
+    /// <summary>Returns the current in-memory save data (used by CloudSyncManager).</summary>
+    public SaveData GetSaveData() => data ?? NewGame();
+
+    /// <summary>
+    /// Merge cloud save data into local save using a best-of strategy:
+    ///   • Higher currency, top score, burnout count win.
+    ///   • Faster drag ET and lap times win.
+    ///   • Car ownership is unioned.
+    /// After merging, GameManager is updated and a local save is written.
+    /// </summary>
+    public void MergeCloudData(SaveData cloudData)
+    {
+        if (cloudData == null) return;
+        if (data == null) data = NewGame();
+
+        if (cloudData.currency > data.currency)
+            data.currency = cloudData.currency;
+
+        if (cloudData.allTimeTopScore > data.allTimeTopScore)
+            data.allTimeTopScore = cloudData.allTimeTopScore;
+
+        if (cloudData.totalBurnouts > data.totalBurnouts)
+            data.totalBurnouts = cloudData.totalBurnouts;
+
+        if (cloudData.bestDragET < data.bestDragET)
+        {
+            data.bestDragET    = cloudData.bestDragET;
+            data.bestTrapSpeed = cloudData.bestTrapSpeed;
+        }
+
+        foreach (string carId in cloudData.ownedCarIds)
+            if (!data.ownedCarIds.Contains(carId))
+                data.ownedCarIds.Add(carId);
+
+        // Merge best lap times per track
+        foreach (var cloudRecord in cloudData.lapRecords)
+        {
+            var local = data.lapRecords.Find(r => r.trackId == cloudRecord.trackId);
+            if (local == null)
+                data.lapRecords.Add(new TrackRecord { trackId = cloudRecord.trackId, bestLap = cloudRecord.bestLap });
+            else if (cloudRecord.bestLap < local.bestLap)
+                local.bestLap = cloudRecord.bestLap;
+        }
+
+        // Apply merged currency to GameManager
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.currency        = data.currency;
+            GameManager.Instance.allTimeTopScore = data.allTimeTopScore;
+            GameManager.Instance.totalBurnouts   = data.totalBurnouts;
+        }
+
+        // Persist merged result locally (without re-triggering a cloud push)
+        try
+        {
+            data.lastSaved = DateTime.UtcNow.ToString("o");
+            File.WriteAllText(savePath, JsonUtility.ToJson(data, prettyPrint: true));
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[SaveSystem] MergeCloudData local write failed: {e.Message}");
+        }
+
+        Debug.Log("[SaveSystem] Cloud data merged successfully.");
     }
 
     // ─── Delete Save ──────────────────────────────────────────────────────────

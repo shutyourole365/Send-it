@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour
         if (currency < amount) return false;
         currency -= amount;
         OnCurrencyChanged?.Invoke(currency);
+        // Mirror to cloud economy (fire-and-forget; local value is already updated)
+        _ = EconomyManager.Instance?.DecrementAsync(amount);
         SaveProgress();
         return true;
     }
@@ -118,6 +120,8 @@ public class GameManager : MonoBehaviour
     {
         currency += amount;
         OnCurrencyChanged?.Invoke(currency);
+        // Mirror to cloud economy
+        _ = EconomyManager.Instance?.IncrementAsync(amount);
         SaveProgress();
     }
 
@@ -136,6 +140,8 @@ public class GameManager : MonoBehaviour
                 allTimeTopScore = score;
                 OnNewHighScore?.Invoke(score);
             }
+            // Submit to global burnout leaderboard
+            _ = LeaderboardManager.Instance?.SubmitBurnoutScoreAsync(score);
         }
 
         Debug.Log($"[GameManager] {mode} score: {score:F0}  Reward: ${reward}  Balance: ${currency}");
